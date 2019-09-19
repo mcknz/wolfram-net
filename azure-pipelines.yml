@@ -1,5 +1,5 @@
 # Starter pipeline
-- task: Install Chrome Driver
+- task: InstallChromeDriver
   inputs:
     targetType: 'inline'
     script: |
