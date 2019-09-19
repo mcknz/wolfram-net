@@ -1,4 +1,12 @@
 # Starter pipeline
+- task: Install Chrome Driver
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
+      unzip chromedriver_linux64.zip
+      chmod +x chromedriver
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
