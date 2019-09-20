@@ -13,13 +13,28 @@ steps:
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
       echo $PATH
+      echo '/usr/share/rust/.cargo/bin=========='
+      ls /usr/share/rust/.cargo/bin
+      echo 'usr/local/sbin========'
+      ls /usr/local/sbin
+      echo 'usr/local/bin========='
       ls /usr/local/bin
+      echo '/usr/sbin'
+      ls /usr/sbin
+      echo '/usr/bin'
+      ls '/usr/bin'
+      echo '/sbin'
+      ls /sbin
+      echo '/bin'
+      ls /bin
+      echo '/snap/bin'
+      /snap/bin
   displayName: 'Install Chrome Driver'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: 'WolframNet'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'test'
+#    projects: 'WolframNet'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
