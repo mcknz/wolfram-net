@@ -10,9 +10,10 @@ steps:
     targetType: 'inline'
     script: |
       which chromedriver
-      //wget https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip
-      //unzip chromedriver_linux64.zip
-      //chmod +x chromedriver
+      /*
+      wget https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip
+      unzip chromedriver_linux64.zip
+      chmod +x chromedriver
       mv chromedriver /usr/local/bin
       echo $PATH
       echo '/usr/share/rust/.cargo/bin=========='
@@ -29,8 +30,7 @@ steps:
       ls /sbin
       echo '/bin========='
       ls /bin
-      echo '/snap/bin=========='
-      ls /snap/bin
+      */
   displayName: 'Install Chrome Driver'
 
 #- task: DotNetCoreCLI@2
