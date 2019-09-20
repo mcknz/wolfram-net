@@ -12,6 +12,9 @@ steps:
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
+      ls
+      cd /usr/bin/google-chrome/
+      ls
   displayName: 'Install Chrome Driver'
 
 - script: |
