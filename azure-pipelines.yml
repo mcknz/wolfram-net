@@ -12,10 +12,12 @@ steps:
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
-      ls -la
-      which Chrome
-      
   displayName: 'Install Chrome Driver'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'WolframNet'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
