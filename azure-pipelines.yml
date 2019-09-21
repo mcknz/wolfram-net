@@ -13,7 +13,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'WolframNet/WolframNet.Features/'
+    projects: 'WolframNet'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
