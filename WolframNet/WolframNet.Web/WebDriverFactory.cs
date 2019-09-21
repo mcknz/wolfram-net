@@ -36,13 +36,15 @@ namespace WolframNet.Web
                 options.AddArguments("headless");
             }
 
-            ChromeDriverService service =
+            using (ChromeDriverService service =
                 ChromeDriverService.CreateDefaultService(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-                );
-
-            service.Start();
-            return new RemoteWebDriver(service.ServiceUrl, options);
+                )
+            )
+            {
+                service.Start();
+                return new RemoteWebDriver(service.ServiceUrl, options);
+            }
         }
     }
 }
