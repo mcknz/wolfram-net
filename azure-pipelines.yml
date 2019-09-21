@@ -5,18 +5,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Bash@3
+- task: DotNetCoreCLI@2
   inputs:
-    targetType: 'inline'
-    script: |
-      which chromedriver
-      
-  displayName: 'Install Chrome Driver'
-
-#- task: DotNetCoreCLI@2
-#  inputs:
-#    command: 'test'
-#    projects: 'WolframNet'
+    command: 'test'
+    projects: 'WolframNet'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
