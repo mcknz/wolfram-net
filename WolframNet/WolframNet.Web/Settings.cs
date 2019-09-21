@@ -8,9 +8,7 @@ namespace WolframNet.Web
     {
         private readonly IConfiguration config;
         private WebDriverType driverType;
-        private string driverPath;
-        private bool? isWindows;
-        private TimeSpan pageTimeout;
+        private TimeSpan? pageTimeout;
         
         public Settings() {
             config = new ConfigurationBuilder()
@@ -29,29 +27,6 @@ namespace WolframNet.Web
                 }
             }
             return driverType;
-            
-        }
-
-        public string GetDriverPath()
-        {
-            if(driverPath == null)
-            {
-                driverPath = GetVariable("driverPath");
-            }
-            return driverPath;
-        }
-
-        public bool IsWindows()
-        {
-            if (!isWindows.HasValue)
-            {
-                string os = GetVariable("operatingSystem");
-                if(os.ToLower().Equals("windows"))
-                {
-                    isWindows = true;
-                }
-            }
-            return isWindows.Value;
         }
 
         public TimeSpan GetPageTimeout()
@@ -67,7 +42,7 @@ namespace WolframNet.Web
                     pageTimeout = TimeSpan.FromSeconds(pageTimeoutSeconds);
                 }
             }
-            return pageTimeout;
+            return pageTimeout.Value;
         }
 
         private string GetVariable(String key)

@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace WolframNet.Web
 {
@@ -36,22 +38,11 @@ namespace WolframNet.Web
 
             ChromeDriverService service =
                 ChromeDriverService.CreateDefaultService(
-                    settings.GetDriverPath(),
-                    GetDriverFile(settings, "chromedriver")
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
                 );
 
             service.Start();
             return new RemoteWebDriver(service.ServiceUrl, options);
-        }
-
-        private String GetDriverFile(Settings settings,
-                                     String name)
-        {
-            if (settings.IsWindows())
-            {
-                return name + ".exe";
-            }
-            return name;
         }
     }
 }
