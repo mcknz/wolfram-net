@@ -7,7 +7,7 @@ pool:
 steps:
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'test'
+    command: 'build'
     projects: 'WolframNet'
 
 - script: |
