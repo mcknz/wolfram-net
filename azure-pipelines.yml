@@ -10,42 +10,18 @@ steps:
     packageType: 'sdk'
     version: '2.2.402'
 
-# restore Nuget packages/dependencies
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    command: restore
-    projects: '**/WolframNet.Features.csproj'
-
-- task: DotNetCoreCLI@2
-  displayName: Publish
-  inputs:
-    command: publish
-    publishWebProjects: false
-    projects: '**/WolframNet.Features.csproj'
-    arguments: '--configuration Release -o $(build.artifactstagingdirectory)/WolframTrivia'
-    zipAfterPublish: false
-    modifyOutputPath: false
-
-# publish all artifacts in the Artifact Stagign Directory
-# this will place the UI Test artifacts in Azure DevOps for future use in the deployment pipeline
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
-
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
+      ROOT = $(System.DefaultWorkingDirectory)/$(TestRoot)
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
-      mv chromedriver $(build.artifactstagingdirectory)/WolframTrivia
-      ls -la $(build.artifactstagingdirectory)/WolframTrivia
+      mv chromedriver $(ROOT)
+      ls -la $(ROOT)
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '$(build.artifactstagingdirectory)/WolframTrivia'
+    projects: $(ROOT)
