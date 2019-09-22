@@ -53,6 +53,6 @@ steps:
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: '**\WolframNet.Features.dll'
+    testAssemblyVer2: '**WolframNet.Features.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     uiTests: true
