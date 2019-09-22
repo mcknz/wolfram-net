@@ -22,5 +22,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    arguments: '--driverPath $(driverPath)'
+    arguments: '--configuration $(BuildConfiguration) --driverPath "$(driverPath)""'
     projects: 'WolframNet'
