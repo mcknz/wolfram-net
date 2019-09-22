@@ -47,4 +47,4 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '$(System.DefaultWorkingDirectory)/UI_Test_Artifact/drop/SeleniumTests/Demo.SeleniumTests.dll'
+    projects: '$(build.artifactstagingdirectory)/drop/SeleniumTests/WolframNet.Features.dll'
