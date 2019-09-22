@@ -14,7 +14,7 @@ namespace WolframNet.Web
         public Settings() {
             config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", true)
                 .Build();
         }
 
@@ -64,7 +64,7 @@ namespace WolframNet.Web
 
         private string GetVariable(String key)
         {
-            String variable = Environment.GetEnvironmentVariable(key);
+            string variable = Environment.GetEnvironmentVariable(key);
             if (variable == null)
             {
                 return config[key];
