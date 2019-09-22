@@ -45,14 +45,7 @@ steps:
       mv chromedriver $(build.artifactstagingdirectory)/WolframTrivia
       ls -la $(build.artifactstagingdirectory)/WolframTrivia
 
-- task: VisualStudioTestPlatformInstaller@1
+- task: DotNetCoreCLI@2
   inputs:
-    packageFeedSelector: 'nugetOrg'
-    versionSelector: 'latestStable'
-
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: '**WolframNet.Features.dll'
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    uiTests: true
+    command: 'test'
+    projects: '$(build.artifactstagingdirectory)/WolframTrivia'
