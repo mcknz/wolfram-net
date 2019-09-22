@@ -48,4 +48,4 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '$(build.artifactstagingdirectory)/drop/SeleniumTests/WolframNet.Features.dll'
+    projects: '$(build.artifactstagingdirectory)/drop/WolframNet.Features.dll'
