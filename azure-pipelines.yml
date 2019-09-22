@@ -10,10 +10,10 @@ steps:
 #    command: 'build'
 #    projects: 'WolframNet'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: 'WolframNet'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'test'
+#    projects: 'WolframNet'
 
 - script: |
     google-chrome --version
