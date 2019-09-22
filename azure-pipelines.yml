@@ -17,11 +17,8 @@ steps:
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
-      mv chromedriver $ROOT
-      ls -la $ROOT
-  env:
-    ROOT: $(System.DefaultWorkingDirectory)/$(TestRoot)
-      
+      mv chromedriver $(driverPath)
+      ls -la $(driverPath)
 
 - task: DotNetCoreCLI@2
   inputs:
