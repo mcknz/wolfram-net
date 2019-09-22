@@ -5,8 +5,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: DotNetCoreInstaller@0
+- task: UseDotNet@2
   inputs:
+    packageType: 'sdk'
     version: '2.2.402'
 
 # restore Nuget packages/dependencies
