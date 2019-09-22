@@ -23,3 +23,7 @@ steps:
   inputs:
     command: 'test'
     projects: 'WolframNet'
+- task: mmajcica.SpecFlowReportGenerator.SpecFlowReportGeneratorTask.SpecFlowReportGenerator@1
+  displayName: 'Generate SpecFlow Report'
+  inputs:
+    projectFile: '**/WolframNet.Features.csproj'
