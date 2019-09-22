@@ -34,17 +34,24 @@ namespace WolframNet.Web
             if (isHeadless)
             {
                 options.AddArguments("headless");
-            }
+            } 
 
             using (ChromeDriverService service =
                 ChromeDriverService.CreateDefaultService(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                    GetAppRoot()
                 )
             )
             {
                 service.Start();
                 return new RemoteWebDriver(service.ServiceUrl, options);
             }
+        }
+
+        private string GetAppRoot()
+        {
+            string codeBaseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string appRoot = codeBaseDirectory.Substring(0, codeBaseDirectory.LastIndexOf("\\bin")) + "\\";
+            return appRoot;
         }
     }
 }
