@@ -44,7 +44,9 @@ steps:
       chmod +x chromedriver
       mv chromedriver $(build.artifactstagingdirectory)/WolframTrivia
       ls -la $(build.artifactstagingdirectory)/WolframTrivia
-- task: DotNetCoreCLI@2
+
+- task: VSTest@2
   inputs:
-    command: 'test'
-    projects: '$(build.artifactstagingdirectory)/WolframTrivia/WolframNet.Features.dll'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: 'WolframNet.Features.dll'
+    searchFolder: '$(build.artifactstagingdirectory)/WolframTrivia'
