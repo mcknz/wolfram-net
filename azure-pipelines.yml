@@ -47,4 +47,4 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '$(build.artifactstagingdirectory)/drop/WolframTrivia/WolframNet.Features.dll'
+    projects: '$(build.artifactstagingdirectory)/WolframTrivia/WolframNet.Features.dll'
