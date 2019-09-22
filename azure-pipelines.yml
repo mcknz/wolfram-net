@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  name: ubuntu-latest
+  name: 'ubuntu-latest'
 
 steps:
 - task: DotNetCoreInstaller@0
