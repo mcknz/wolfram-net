@@ -34,3 +34,17 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
   condition: succeededOrFailed()
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd $(build.artifactstagingdirectory)/WolframTrivia
+      wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
+      unzip chromedriver_linux64.zip
+      chmod +x chromedriver
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(System.DefaultWorkingDirectory)/UI_Test_Artifact/drop/SeleniumTests/Demo.SeleniumTests.dll'
