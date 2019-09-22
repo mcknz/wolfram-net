@@ -23,4 +23,3 @@ steps:
   inputs:
     command: 'test'
     projects: 'WolframNet'
-    #arguments: '--configuration $(BuildConfiguration)'
