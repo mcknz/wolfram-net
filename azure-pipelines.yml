@@ -14,14 +14,16 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      ROOT = $(System.DefaultWorkingDirectory)/$(TestRoot)
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
-      mv chromedriver $(ROOT)
-      ls -la $(ROOT)
+      mv chromedriver $ROOT
+      ls -la $ROOT
+  env:
+    ROOT: $(System.DefaultWorkingDirectory)/$(TestRoot)
+      
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: $(ROOT)
+    projects: 'WolframNet'
