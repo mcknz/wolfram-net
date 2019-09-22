@@ -65,7 +65,7 @@ namespace WolframNet.Web
 
         private WebDriverWait GetWait()
         {
-            WebDriverWait wait = new WebDriverWait(driver, settings.GetPageTimeout());
+            WebDriverWait wait = new WebDriverWait(driver, settings.PageTimeout);
             wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
             return wait;
         }

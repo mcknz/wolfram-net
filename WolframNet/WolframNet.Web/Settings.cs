@@ -9,6 +9,7 @@ namespace WolframNet.Web
         private readonly IConfiguration config;
         private WebDriverType driverType;
         private TimeSpan? pageTimeout;
+        private string testRoot;
         
         public Settings() {
             config = new ConfigurationBuilder()
@@ -17,32 +18,48 @@ namespace WolframNet.Web
                 .Build();
         }
 
-        public WebDriverType getDriverType()
+        public WebDriverType DriverType
         {
-            if(driverType == WebDriverType.None)
+            get
             {
-                if (!Enum.TryParse(GetVariable("driverType"), out driverType))
+                if (driverType == WebDriverType.None)
                 {
-                    throw new Exception("Incorrect driver type.");
+                    if (!Enum.TryParse(GetVariable("driverType"), out driverType))
+                    {
+                        throw new Exception("Incorrect driver type.");
+                    }
                 }
+                return driverType;
             }
-            return driverType;
+            
         }
 
-        public TimeSpan GetPageTimeout()
+        public TimeSpan PageTimeout
         {
-            if (pageTimeout == null)
+            get
             {
-                if(!int.TryParse(GetVariable("pageTimeout"), out int pageTimeoutSeconds))
+                if (pageTimeout == null)
                 {
-                    throw new Exception("Invalid page timeout.");
+                    if (!int.TryParse(GetVariable("pageTimeout"), out int pageTimeoutSeconds))
+                    {
+                        throw new Exception("Invalid page timeout.");
+                    }
+                    else
+                    {
+                        pageTimeout = TimeSpan.FromSeconds(pageTimeoutSeconds);
+                    }
                 }
-                else
-                {
-                    pageTimeout = TimeSpan.FromSeconds(pageTimeoutSeconds);
-                }
+                return pageTimeout.Value;
             }
-            return pageTimeout.Value;
+        }
+
+        public string DriverPath
+        {
+            get
+            {
+                testRoot = GetVariable("driverPath");
+                return testRoot;
+            }
         }
 
         private string GetVariable(String key)

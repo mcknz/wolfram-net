@@ -3,8 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
-using System.IO;
-using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace WolframNet.Web
 {
@@ -17,7 +16,7 @@ namespace WolframNet.Web
 
         private IWebDriver GetWebDriver(Settings settings)
         {
-            switch (settings.getDriverType())
+            switch (settings.DriverType)
             {
                 case WebDriverType.Chrome:
                     return GetChromeDriver(settings, false);
@@ -34,24 +33,25 @@ namespace WolframNet.Web
             if (isHeadless)
             {
                 options.AddArguments("headless");
-            } 
-
-            using (ChromeDriverService service =
-                ChromeDriverService.CreateDefaultService(
-                    GetAppRoot()
-                )
-            )
-            {
-                service.Start();
-                return new RemoteWebDriver(service.ServiceUrl, options);
             }
+
+            ChromeDriverService service =
+#pragma warning disable IDE0067 // Dispose objects before losing scope
+                                // reason: disposing of service causes connection to Chrome to fail
+                ChromeDriverService.CreateDefaultService(
+                    settings.DriverPath, GetDriverExeName("chromedriver")
+                );
+#pragma warning restore IDE0067 // Dispose objects before losing scope
+
+            service.Start();
+            return new RemoteWebDriver(service.ServiceUrl, options);
         }
 
-        private string GetAppRoot()
+        private string GetDriverExeName(string baseName)
         {
-            string codeBaseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string appRoot = codeBaseDirectory.Substring(0, codeBaseDirectory.LastIndexOf("\\bin")) + "\\";
-            return appRoot;
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? baseName + ".exe"
+                : baseName;
         }
     }
 }
