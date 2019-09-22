@@ -39,11 +39,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      cd $(build.artifactstagingdirectory)/WolframTrivia
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
-      ls -la $(build.artifactstagingdirectory)
+      mv chromedriver $(build.artifactstagingdirectory)/drop/WolframTrivia
 
 - task: DotNetCoreCLI@2
   inputs:
