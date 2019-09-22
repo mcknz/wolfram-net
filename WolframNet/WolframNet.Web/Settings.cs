@@ -15,6 +15,7 @@ namespace WolframNet.Web
             config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true)
+                .AddEnvironmentVariables()
                 .Build();
         }
 
