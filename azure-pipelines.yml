@@ -2,21 +2,35 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: ubuntu-latest
 
 steps:
-#- task: DotNetCoreCLI@2
-#  inputs:
-#    command: 'build'
-#    projects: 'WolframNet'
+- task: DotNetCoreInstaller@0
+  displayName: 'Use .NET Core sdk 2.2.402'
+  inputs:
+    version: 2.2.402
+
+# restore Nuget packages/dependencies
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: '**/WolframNet.Features.csproj'
 
 - task: DotNetCoreCLI@2
+  displayName: Publish
   inputs:
-    command: 'test'
-    projects: 'WolframNet'
+    command: publish
+    publishWebProjects: false
+    projects: '**/WolframNet.Features.csproj'
+    arguments: '--configuration Release -o $(build.artifactstagingdirectory)/WolframTrivia'
+    zipAfterPublish: false
+    modifyOutputPath: false
 
-- script: |
-    google-chrome --version
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# publish all artifacts in the Artifact Stagign Directory
+# this will place the UI Test artifacts in Azure DevOps for future use in the deployment pipeline
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
