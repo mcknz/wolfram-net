@@ -43,7 +43,7 @@ steps:
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
       mv chromedriver $(build.artifactstagingdirectory)/drop/WolframTrivia
-
+      ls -la $(build.artifactstagingdirectory)/drop/WolframTrivia
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
