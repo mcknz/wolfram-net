@@ -1,1 +1,32 @@
 
+#trigger:
+#- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '2.2.402'
+
+#- task: Bash@3
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      brew update
+#      brew cask install google-chrome
+#      wget https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_mac64.zip
+#      unzip chromedriver_mac64.zip
+#      chmod +x chromedriver
+#      ls -la $(driverPath)
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'WolframNet'
+
+- task: SpecFlowReportGenerator@1
+  displayName: 'Generate SpecFlow Report'
+  inputs:
+    projectFile: '**/WolframNet.Features.csproj'
