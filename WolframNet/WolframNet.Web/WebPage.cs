@@ -10,9 +10,9 @@ namespace WolframNet.Web
     {
         private readonly IWebDriver driver;
         private readonly Settings settings;
-        private readonly String url;
+        private readonly string url;
 
-        public WebPage(String url)
+        public WebPage(string url)
         {
             driver = Driver.Get();
             settings = Driver.GetSettings();
@@ -52,21 +52,16 @@ namespace WolframNet.Web
 
         private IWebElement WaitUntilElementClickable(By locator)
         {
-            try
-            {
-                return GetWait().Until(ExpectedConditions.ElementToBeClickable(locator));
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("Element with locator: '" + locator.ToString() + "' was not found in current context page.");
-                return null;
-            }
+            return GetWait().Until(ExpectedConditions.ElementToBeClickable(locator));
         }
 
         private WebDriverWait GetWait()
         {
             WebDriverWait wait = new WebDriverWait(driver, settings.PageTimeout);
-            wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+            wait.IgnoreExceptionTypes(
+                typeof(StaleElementReferenceException),
+                typeof(NoSuchElementException)
+            );
             return wait;
         }
     }

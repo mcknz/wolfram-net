@@ -44,7 +44,7 @@ namespace WolframNet.Pages
         {
             try
             {
-                Thread.Sleep(3000);
+                //Thread.Sleep(3000);
             }
             catch (Exception)
             {
