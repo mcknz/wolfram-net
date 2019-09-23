@@ -4,7 +4,7 @@
     Given I navigate to Wolfram Alpha
 
   Scenario: Wolfram Alpha Knows Star Wars
-    When I ask "the possibility of successfully navigating an asteroid field"
+    When I ask "what is the possibility of successfully navigating an asteroid field"
     Then Wolfram Alpha answers "3720:1"
 
   Scenario: Wolfram Alpha Knows Movies

@@ -30,22 +30,22 @@ namespace WolframNet.Web
             actions.MoveToElement(WaitUntilElementClickableByXPath(xPath)).Perform();
         }
 
-        protected void EnterTextByXPath(String xPath, String text)
+        protected void EnterTextByXPath(string xPath, string text)
         {
             WaitUntilElementClickableByXPath(xPath).SendKeys(text);
         }
 
-        protected String GetTextByXPath(String xPath)
+        protected String GetTextByXPath(string xPath)
         {
             return WaitUntilElementClickableByXPath(xPath).Text;
         }
 
-        protected void ClickByXPath(String xPath)
+        protected void ClickByXPath(string xPath)
         {
             WaitUntilElementClickableByXPath(xPath).Click();
         }
 
-        private IWebElement WaitUntilElementClickableByXPath(String xPath)
+        private IWebElement WaitUntilElementClickableByXPath(string xPath)
         {
             return WaitUntilElementClickable(By.XPath(xPath));
         }

@@ -107,7 +107,7 @@ namespace WolframNet.Features.Features
 #line 3
   this.FeatureBackground();
 #line 7
-    testRunner.When("I ask \"the possibility of successfully navigating an asteroid field\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I ask \"what is the possibility of successfully navigating an asteroid field\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
     testRunner.Then("Wolfram Alpha answers \"3720:1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

@@ -16,10 +16,10 @@ namespace WolframNet.Pages
             Pause();
         }
 
-        public void Ask(String question)
+        public void Ask(string question)
         {
-            String questionTextXPath = "//input[@placeholder='Enter what you want to calculate or know about']";
-            String questionButtonXPath = "//button[@type='submit']";
+            string questionTextXPath = "//input[@placeholder='Enter what you want to calculate or know about']";
+            string questionButtonXPath = "//button[@type='submit']";
 
             EnterTextByXPath(questionTextXPath, question);
             Pause();
@@ -27,11 +27,12 @@ namespace WolframNet.Pages
             Pause();
         }
 
-        public String GetAnswer()
+        public string GetAnswer()
         {
-            String answerDivXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/section[1]/section[2]/div[2]";
-            String answerButtonXPath = "//span[text() = 'Plaintext']";
-            String answerTextXPath = "//div[@aria-describedby='tooltip5']/button/span";
+            string answerDivXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/section[1]/section[2]/div[2]";
+            //string answerButtonXPath = "//span[text() = 'Plaintext']";
+            string answerButtonXPath = "adsdafasdf";
+            string answerTextXPath = "//div[@aria-describedby='tooltip5']/button/span";
 
             MouseoverByXPath(answerDivXPath);
             Pause();
