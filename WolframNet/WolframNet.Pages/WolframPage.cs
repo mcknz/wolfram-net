@@ -30,8 +30,7 @@ namespace WolframNet.Pages
         public string GetAnswer()
         {
             string answerDivXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/section[1]/section[2]/div[2]";
-            //string answerButtonXPath = "//span[text() = 'Plaintext']";
-            string answerButtonXPath = "adsdafasdf";
+            string answerButtonXPath = "//span[text() = 'Plaintext']";
             string answerTextXPath = "//div[@aria-describedby='tooltip5']/button/span";
 
             MouseoverByXPath(answerDivXPath);
