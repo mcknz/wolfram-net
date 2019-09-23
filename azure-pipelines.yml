@@ -14,8 +14,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
-      unzip chromedriver_linux64.zip
+      wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip
+      unzip chromedriver_mac64.zip
       chmod +x chromedriver
       ls -la $(driverPath)
 
@@ -23,7 +23,8 @@ steps:
   inputs:
     command: 'test'
     projects: 'WolframNet'
-- task: mmajcica.SpecFlowReportGenerator.SpecFlowReportGeneratorTask.SpecFlowReportGenerator@1
+
+- task: SpecFlowReportGenerator@1
   displayName: 'Generate SpecFlow Report'
   inputs:
     projectFile: '**/WolframNet.Features.csproj'
