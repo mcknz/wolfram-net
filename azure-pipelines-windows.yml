@@ -9,7 +9,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'echo $ChromeWebDriver'
+    script: 'echo %ChromeWebDriver%'
 
 #- task: UseDotNet@2
 #  inputs:
