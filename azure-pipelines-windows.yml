@@ -6,6 +6,10 @@ pool:
 
 steps:
 
+- task: CmdLine@2
+  inputs:
+    script: 'echo %ChromeWebDriver% env: ChomeWebDriver: $(driverPath)'
+
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
