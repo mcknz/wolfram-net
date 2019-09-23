@@ -1,3 +1,4 @@
+
 trigger:
 - master
 
@@ -14,6 +15,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      brew install brew-cask
+      brew cask install google-chrome
       wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip
       unzip chromedriver_mac64.zip
       chmod +x chromedriver
