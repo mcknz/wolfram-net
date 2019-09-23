@@ -1,6 +1,6 @@
 
-trigger:
-- master
+#trigger:
+#- master
 
 pool:
   vmImage: 'macOS'
