@@ -44,9 +44,6 @@ namespace WolframNet.Steps
             try
             {
                 Assert.IsTrue(page.GetAnswer().Contains(answer));
-                if (answer.Equals("3720:1")) {
-                    Driver.Quit();
-                }
             }
             catch (Exception ex)
             {

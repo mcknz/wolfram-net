@@ -32,8 +32,8 @@ namespace WolframNet.Web {
         {
             if (driver != null)
             {
-                Thread.Sleep(5000);
                 driver.Close();
+                Thread.Sleep(5000);
                 driver.Quit();
                 driver.Dispose();
                 driver = null;
