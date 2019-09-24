@@ -29,13 +29,14 @@ namespace WolframNet.Web {
 
         public static void Quit()
         {
-            if (driver != null)
-            {
+            //if (driver != null)
+            //{
+
                 driver.Close();
                 driver.Quit();
                 driver.Dispose();
                 driver = null;
-            }
+            //}
         }
     }
 }
