@@ -6,11 +6,11 @@ pool:
 
 steps:
 
-- task: CmdLine@2
+- task: PowerShell@2
   inputs:
+    targetType: 'inline'
     script: |
-      set DRIVERPATH=%ChromeWebDriver%
-      set
+      Write-Host ("##vso[task.setvariable variable=driverPathj;]$env:ChromeWebDriver")
 
 - task: CmdLine@2
   inputs:
