@@ -25,9 +25,3 @@ steps:
   inputs:
     command: 'test'
     projects: 'WolframNet'
-
-- task: SpecFlowPlus@0
-  inputs:
-    projectFilePath: 'WolframNet/WolframNet.Features'
-    projectName: 'WolframNet'
-    projectLanguage: 'en'
