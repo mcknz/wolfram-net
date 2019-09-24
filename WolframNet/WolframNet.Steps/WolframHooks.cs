@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using TechTalk.SpecFlow;
 using WolframNet.Web;
 
 namespace WolframNet.Features
@@ -18,7 +19,8 @@ namespace WolframNet.Features
         [AfterFeature]
         public static void AfterFeature()
         {
-            Driver.Quit();
+            //Console.WriteLine("AfterFeature");
+            //Driver.Quit();
         }
     }
 }

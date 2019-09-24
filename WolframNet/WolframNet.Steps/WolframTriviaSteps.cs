@@ -15,6 +15,7 @@ namespace WolframNet.Steps
         {
             try
             {
+                Console.WriteLine("Given");
                 page.Go();
             }
             catch(Exception ex)
