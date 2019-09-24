@@ -20,7 +20,7 @@ namespace WolframNet.Features
         public static void AfterFeature()
         {
             Console.WriteLine("AfterFeature");
-            //Driver.Quit();
+            Driver.Quit();
         }
     }
 }
