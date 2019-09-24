@@ -32,7 +32,7 @@ namespace WolframNet.Web
             ChromeOptions options = new ChromeOptions();
             if (isHeadless)
             {
-                options.AddArguments("headless");
+                options.AddArguments("headless", "window-size=1920,1080");
             }
 
             ChromeDriverService service =
