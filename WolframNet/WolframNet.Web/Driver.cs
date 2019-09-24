@@ -1,4 +1,5 @@
 using OpenQA.Selenium;
+using System.Threading;
 
 namespace WolframNet.Web {
 
@@ -29,14 +30,14 @@ namespace WolframNet.Web {
 
         public static void Quit()
         {
-            //if (driver != null)
-            //{
-            throw new System.Exception("quitting......");
+            if (driver != null)
+            {
+                Thread.Sleep(5000);
                 driver.Close();
                 driver.Quit();
                 driver.Dispose();
                 driver = null;
-            //}
+            }
         }
     }
 }
