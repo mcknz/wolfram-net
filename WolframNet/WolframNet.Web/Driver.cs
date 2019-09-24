@@ -31,7 +31,7 @@ namespace WolframNet.Web {
         {
             //if (driver != null)
             //{
-
+            throw new System.Exception("quitting......");
                 driver.Close();
                 driver.Quit();
                 driver.Dispose();
