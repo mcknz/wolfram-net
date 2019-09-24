@@ -18,7 +18,7 @@ namespace WolframNet.Web
             {
                 case WebDriverType.Chrome:
                     return GetChromeDriver(settings, false);
-                case WebDriverType.HeadlessChrome:
+                case WebDriverType.ChromeHeadless:
                     return GetChromeDriver(settings, true);
             }
             throw new ArgumentException("Unable to create Driver for the specified type.");
