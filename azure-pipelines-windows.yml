@@ -9,7 +9,12 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      set driverPath=%ChromeWebDriver%
+      set DRIVERPATH=%ChromeWebDriver%
+      set
+
+- task: CmdLine@2
+  inputs:
+    script: |
       set
 
 #- task: UseDotNet@2
