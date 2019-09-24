@@ -35,6 +35,7 @@ namespace WolframNet.Web
                 options.AddArguments("headless", "window-size=1920,1080");
             }
 
+            /*
             ChromeDriverService service =
 #pragma warning disable IDE0067 // Dispose objects before losing scope
                                 // reason: disposing of service causes connection to Chrome to fail
@@ -45,6 +46,8 @@ namespace WolframNet.Web
 
             service.Start();
             return new RemoteWebDriver(service.ServiceUrl, options);
+            */
+            return new ChromeDriver(settings.DriverPath, options);
         }
 
         private string GetDriverExeName(string baseName)
