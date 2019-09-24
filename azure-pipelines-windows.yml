@@ -22,7 +22,8 @@ steps:
     command: 'test'
     projects: 'WolframNet'
 
-- task: SpecFlowReportGenerator@1
-  displayName: 'Generate SpecFlow Report'
+- task: SpecFlowPlus@0
   inputs:
-    projectFile: '**/WolframNet.Features.csproj'
+    projectFilePath: 'WolframNet/WolframNet.Features'
+    projectName: 'WolframNet'
+    projectLanguage: 'en'
