@@ -26,13 +26,8 @@ steps:
     command: 'test'
     projects: 'WolframNet'
 
-- task: Bash@3
+- task: SpecFlowPlus@0
   inputs:
-    targetType: 'inline'
-    script: |
-      ps aux
-
-- task: SpecFlowReportGenerator@1
-  displayName: 'Generate SpecFlow Report'
-  inputs:
-    projectFile: '**/WolframNet.Features.csproj'
+    projectFilePath: 'WolframNet/WolframNet.Features'
+    projectName: 'WolframNet'
+    projectLanguage: 'en'
