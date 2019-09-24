@@ -1,4 +1,5 @@
 using OpenQA.Selenium;
+using System.Diagnostics;
 using System.Threading;
 
 namespace WolframNet.Web {
@@ -37,6 +38,10 @@ namespace WolframNet.Web {
                 driver.Quit();
                 driver.Dispose();
                 driver = null;
+                foreach (Process proc in Process.GetProcessesByName("chromedriver"))
+                {
+                    proc.Kill();
+                }
             }
         }
     }
