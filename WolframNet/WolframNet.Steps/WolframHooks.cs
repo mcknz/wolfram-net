@@ -7,9 +7,16 @@ namespace WolframNet.Features
     public sealed class WolframHooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-
+        /*
         [AfterTestRun]
         public static void AfterTestRun()
+        {
+            Driver.Quit();
+        }
+        */
+
+        [AfterFeature]
+        public static void AfterFeature()
         {
             Driver.Quit();
         }
