@@ -19,7 +19,7 @@ namespace WolframNet.Features
         [AfterFeature]
         public static void AfterFeature()
         {
-            //Console.WriteLine("AfterFeature");
+            Console.WriteLine("AfterFeature");
             //Driver.Quit();
         }
     }

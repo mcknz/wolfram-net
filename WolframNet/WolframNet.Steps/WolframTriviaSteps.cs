@@ -2,6 +2,7 @@
 using System;
 using TechTalk.SpecFlow;
 using WolframNet.Pages;
+using WolframNet.Web;
 
 namespace WolframNet.Steps
 {
@@ -43,6 +44,9 @@ namespace WolframNet.Steps
             try
             {
                 Assert.IsTrue(page.GetAnswer().Contains(answer));
+                if (answer.Equals("3720:1")) {
+                    Driver.Quit();
+                }
             }
             catch (Exception ex)
             {
