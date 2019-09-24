@@ -42,14 +42,8 @@ namespace WolframNet.Pages
 
         private void Pause()
         {
-            try
-            {
-                //Thread.Sleep(3000);
-            }
-            catch (Exception)
-            {
-                //sleep for display purposes, don't need to handle exception.
-            }
+            // for display purposes only
+            Thread.Sleep(1);
         }
     }
 }

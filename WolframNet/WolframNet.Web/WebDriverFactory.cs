@@ -1,9 +1,7 @@
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using System;
-using System.Runtime.InteropServices;
 
 namespace WolframNet.Web
 {
@@ -34,27 +32,8 @@ namespace WolframNet.Web
             {
                 options.AddArguments("headless", "window-size=1920,1080");
             }
-
-            /*
-            ChromeDriverService service =
-#pragma warning disable IDE0067 // Dispose objects before losing scope
-                                // reason: disposing of service causes connection to Chrome to fail
-                ChromeDriverService.CreateDefaultService(
-                    settings.DriverPath, GetDriverExeName("chromedriver")
-                );
-#pragma warning restore IDE0067 // Dispose objects before losing scope
-
-            service.Start();
-            return new RemoteWebDriver(service.ServiceUrl, options);
-            */
+            
             return new ChromeDriver(settings.DriverPath, options);
-        }
-
-        private string GetDriverExeName(string baseName)
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                ? baseName + ".exe"
-                : baseName;
         }
     }
 }
