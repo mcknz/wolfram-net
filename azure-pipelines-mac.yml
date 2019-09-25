@@ -19,7 +19,6 @@ steps:
       wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_mac64.zip"
       unzip chromedriver_mac64.zip
       chmod +x chromedriver
-      ls -la $(driverPath)
 
 - task: DotNetCoreCLI@2
   inputs:
