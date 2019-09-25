@@ -13,9 +13,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      google-chrome --version
-      CHROMEDRIVER='https://chromedriver.storage.googleapis.com/`google-chrome --version`/chromedriver_linux64.zip'
-      wget ${CHROMEDRIVER}
+      CHROME_VERSION=`google-chrome --version | grep -iE "[0-9.]{10,20}"`
+      wget https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
       
