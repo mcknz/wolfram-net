@@ -13,8 +13,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      echo google-chrome --version
-      wget https://chromedriver.storage.googleapis.com/`google-chrome --version`/chromedriver_linux64.zip
+      google-chrome --version
+      CHROMEDRIVER='https://chromedriver.storage.googleapis.com/`google-chrome --version`/chromedriver_linux64.zip'
+      wget ${CHROMEDRIVER}
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
       
