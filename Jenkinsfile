@@ -1,36 +1,20 @@
 pipeline {
   agent any
-  tools {
-    maven 'Maven-3.6.0'
-    jdk 'OpenJDK-11'
-  }
   stages {
-    stage ('Checkout code') {
+    stage('Clean workspace') {
       steps {
-        git credentialsId: 'mcknz-ssh', url: 'git@github.com:mcknz/wolfram-java.git'
+        cleanWs()
       }
     }
-    stage ('Run Tests') {
+    stage('Checkout code') {
       steps {
-        sh '''mvn \
-            -q \
-            -DdriverType=${driverType} \
-            -DpageTimeout=${pageTimeout} \
-            -DdriverPathAndName=${driverPathAndName} \
-          test''' 
+        git credentialsId: 'mcknz-ssh', url: 'git@github.com:mcknz/wolfram-net.git'
       }
     }
-    stage ('Generate Reports') {
+    stage('Run tests') {
       steps {
-        cucumber buildStatus: 'UNSTABLE',
-                 fileIncludePattern: '**/*.json',
-                 trendsLimit: 10,
-                 classifications: [
-                   [
-                     'key': 'Browser',
-                     'value': 'Chrome'
-                   ]
-                 ]
+        sh '/usr/local/share/dotnet/dotnet test WolframNet --logger trx --results-directory ${WORKSPACE}'
+        mstest testResultsFile:"**/*.trx", keepLongStdio: true
       }
     }
   }
