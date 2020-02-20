@@ -9,7 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolframNet.Steps", "Wolfram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolframNet.Pages", "WolframNet.Pages\WolframNet.Pages.csproj", "{676D1438-9048-461C-932E-ABC7673CAC4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframNet.Web", "WolframNet.Web\WolframNet.Web.csproj", "{AB160559-C68F-440E-A6FF-487EA7E3E763}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolframNet.Web", "WolframNet.Web\WolframNet.Web.csproj", "{AB160559-C68F-440E-A6FF-487EA7E3E763}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipelines", "pipelines", "{7636A562-F8C5-4814-9201-BAA5F3EB86F3}"
+	ProjectSection(SolutionItems) = preProject
+		..\azure-pipelines-linux.yml = ..\azure-pipelines-linux.yml
+		..\azure-pipelines-mac.yml = ..\azure-pipelines-mac.yml
+		..\azure-pipelines-windows.yml = ..\azure-pipelines-windows.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
