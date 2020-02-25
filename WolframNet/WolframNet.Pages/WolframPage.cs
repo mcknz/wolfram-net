@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
 using System.Threading;
 using WolframNet.Web;
 
@@ -6,7 +6,7 @@ namespace WolframNet.Pages
 {
     public class WolframPage : WebPage
     {
-        public WolframPage() : base("https://www.wolframalpha.com/")
+        public WolframPage(ILogger<WolframPage> logger) : base("https://www.wolframalpha.com/", logger)
         {
         }
 

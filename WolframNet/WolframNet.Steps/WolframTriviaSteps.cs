@@ -1,15 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
 using WolframNet.Pages;
-using WolframNet.Web;
 
 namespace WolframNet.Steps
 {
     [Binding]
     public class WolframTriviaSteps
     {
-        readonly WolframPage page = new WolframPage();
+        readonly WolframPage page;
+
+        public WolframTriviaSteps()
+        {
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole();
+            });
+            ILogger<WolframPage> logger = loggerFactory.CreateLogger<WolframPage>();
+
+            page = new WolframPage(logger);
+        }
 
         [Given]
         public void Given_I_navigate_to_Wolfram_Alpha()

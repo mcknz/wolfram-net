@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Extensions.Logging;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -11,16 +12,19 @@ namespace WolframNet.Web
         private readonly IWebDriver driver;
         private readonly Settings settings;
         private readonly string url;
+        private readonly ILogger<WebPage> logger;
 
-        public WebPage(string url)
+        public WebPage(string url, ILogger<WebPage> logger)
         {
             driver = Driver.Get();
             settings = Driver.GetSettings();
             this.url = url;
+            this.logger = logger;
         }
 
         public void NavigateToStartingUrl()
         {
+            LogInfo("Navigating to {url}", url);
             driver.Navigate().GoToUrl(url);
         }
 
@@ -47,12 +51,22 @@ namespace WolframNet.Web
 
         private IWebElement WaitUntilElementClickableByXPath(string xPath)
         {
+            LogInfo("Waiting until {xPath} is clickable", xPath);
             return WaitUntilElementClickable(By.XPath(xPath));
         }
 
         private IWebElement WaitUntilElementClickable(By locator)
         {
-            return GetWait().Until(ExpectedConditions.ElementToBeClickable(locator));
+            WebDriverWait wait = GetWait();
+            IWebElement element = null;
+            try
+            {
+                element = wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+            }
+            catch(Exception ex) when (LogError(ex, "error retrieving web element"))
+            {
+            }
+            return element;
         }
 
         private WebDriverWait GetWait()
@@ -63,6 +77,19 @@ namespace WolframNet.Web
                 typeof(NoSuchElementException)
             );
             return wait;
+        }
+
+        private void LogInfo(string message, string param)
+        {
+            string logMessage = $"[info] {message}";
+            logger.LogInformation(logMessage, param);
+        }
+
+        private bool LogError(Exception ex, string message)
+        {
+            string logMessage = $"[error] {message}";
+            logger.LogError(ex, logMessage);
+            return false;
         }
     }
 }
