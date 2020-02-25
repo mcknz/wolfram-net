@@ -14,7 +14,7 @@ steps:
     targetType: 'inline'
     script: |
       echo google-chrome --product-version
-      version=$(google-chrome --version | grep -iE "[0-9.]{10,20}")
+      version=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
       echo $version
 
 
