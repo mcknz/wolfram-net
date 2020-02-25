@@ -13,17 +13,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      echo google-chrome --product-version
-      version=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
-      echo $version
-
-
-#      wget "https://chromedriver.storage.googleapis.com/${version}/chromedriver_linux64.zip"
-#      unzip chromedriver_linux64.zip
-#      chmod +x chromedriver
+      chromeVersion=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
+      wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_linux64.zip"
+      unzip chromedriver_linux64.zip
+      chmod +x chromedriver
       
-#- task: DotNetCoreCLI@2
-#  inputs:
-#    command: 'test'
-#    projects: 'WolframNet'
-#
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'WolframNet'
