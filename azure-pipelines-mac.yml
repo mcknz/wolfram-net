@@ -14,9 +14,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      brew update
-      brew cask install google-chrome
       chromeVersion=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
+      if [ -z "${chromeVersion}" ]
+      then
+        brew update
+        brew cask install google-chrome
+        chromeVersion=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
+      fi
       wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
       unzip chromedriver_mac64.zip
       chmod +x chromedriver
