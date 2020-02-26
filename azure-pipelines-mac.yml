@@ -14,8 +14,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | grep -iE "[0-9.]{10,20}")
+      chrome=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)
       echo ${chromeVersion}
+      chromeVersionNumber=$(${chromeVersion} | grep -iE "[0-9.]{10,20}")
+      echo ${chromeVersionNumber}
 #     if [ -z "${chromeVersion}" ]
       #then
       #  brew update
