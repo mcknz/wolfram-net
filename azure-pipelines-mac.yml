@@ -16,7 +16,8 @@ steps:
     script: |
       brew update
       brew cask install google-chrome
-      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_mac64.zip"
+      chromeVersion=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
+      wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
       unzip chromedriver_mac64.zip
       chmod +x chromedriver
 
