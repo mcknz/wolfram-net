@@ -15,11 +15,14 @@ steps:
     targetType: 'inline'
     script: |
       chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)
-      echo ${chromeVersion}
-      echo ${chromeVersion} | grep -iE "[0-9.]{10,20}"
+      echo chromeVersion=${chromeVersion}
+      x=$(echo "Google Chrome 80.0.3987.106" | grep -iE "[0-9.]{10,20}")
+      echo x=${x}
+      y=echo "Google Chrome 80.0.3987.106" | grep -iE "[0-9.]{10,20}"
+      echo y=${y}
       echo $("${chromeVersion}" | grep -iE "[0-9.]{10,20}")
       chromeVersionNumber=$(echo ${chromeVersion} | grep -iE "[0-9.]{10,20}")
-      echo ${chromeVersionNumber}
+      echo chromeVersionNumber=${chromeVersionNumber}
 #     if [ -z "${chromeVersion}" ]
       #then
       #  brew update
