@@ -20,7 +20,7 @@ steps:
       echo x=${x}
       y=echo "Google Chrome 80.0.3987.106" | grep -iE "[0-9.]{10,20}"
       echo y=${y}
-      echo $(echo "${chromeVersion}" | grep -iE "[0-9.]{10,20}")
+      echo $(echo ${chromeVersion} | egrep -o "[0-9.]{10,20}")
       chromeVersionNumber=$(echo ${chromeVersion} | grep -iE "[0-9.]{10,20}")
       echo chromeVersionNumber=${chromeVersionNumber}
 #     if [ -z "${chromeVersion}" ]
