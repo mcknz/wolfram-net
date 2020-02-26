@@ -5,27 +5,28 @@ pool:
   vmImage: 'macOS'
 
 steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '3.1.x'
+#- task: UseDotNet@2
+#  inputs:
+#    packageType: 'sdk'
+#    version: '3.1.x'
 
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | grep -iE "[0-9.]{10,20}")
-      if [ -z "${chromeVersion}" ]
-      then
-        brew update
-        brew cask install google-chrome
-        chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | grep -iE "[0-9.]{10,20}")
-      fi
-      wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
-      unzip chromedriver_mac64.zip
-      chmod +x chromedriver
+      echo ${chromeVersion}
+#     if [ -z "${chromeVersion}" ]
+      #then
+      #  brew update
+      #  brew cask install google-chrome
+      #  chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | grep -iE "[0-9.]{10,20}")
+      #fi
+      #wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
+      #unzip chromedriver_mac64.zip
+      #chmod +x chromedriver
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: 'WolframNet'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'test'
+#    projects: 'WolframNet'
