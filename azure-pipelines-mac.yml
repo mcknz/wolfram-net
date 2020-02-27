@@ -4,36 +4,28 @@ trigger: none
 pool:
   vmImage: 'macOS'
 
+variables:
+  driverPath: $(System.DefaultWorkingDirectory)
+  driverType: 'ChromeHeadless'
+  pageTimeout: 60
+
 steps:
-#- task: UseDotNet@2
-#  inputs:
-#    packageType: 'sdk'
-#    version: '3.1.x'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '3.1.x'
 
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
-      chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)
-      echo chromeVersion=${chromeVersion}
-      x=$(echo "Google Chrome 80.0.3987.106" | grep -iE "[0-9.]{10,20}")
-      echo x=${x}
-      y=echo "Google Chrome 80.0.3987.106" | grep -iE "[0-9.]{10,20}"
-      echo y=${y}
-      echo $(echo ${chromeVersion} | egrep -o "[0-9.]{10,20}")
-      chromeVersionNumber=$(echo ${chromeVersion} | grep -iE "[0-9.]{10,20}")
-      echo chromeVersionNumber=${chromeVersionNumber}
-#     if [ -z "${chromeVersion}" ]
-      #then
-      #  brew update
-      #  brew cask install google-chrome
-      #  chromeVersion=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | grep -iE "[0-9.]{10,20}")
-      #fi
-      #wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
-      #unzip chromedriver_mac64.zip
-      #chmod +x chromedriver
+      chrome=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)
+      chromeVersion=$(echo ${chrome} | egrep -o "[0-9.]{10,20}")
+      wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_mac64.zip"
+      unzip chromedriver_mac64.zip
+      chmod +x chromedriver
 
-#- task: DotNetCoreCLI@2
-#  inputs:
-#    command: 'test'
-#    projects: 'WolframNet'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'WolframNet'
