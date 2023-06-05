@@ -1,0 +1,5 @@
+{
+    "driverType": "Chrome",
+    "pageTimeout": 60,
+    "driverPath": "/path/to/selenium/"
+}
