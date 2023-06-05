@@ -18,7 +18,7 @@ namespace WolframNet.Pages
 
         public void Ask(string question)
         {
-            string questionTextXPath = "//input[@placeholder='Enter what you want to calculate or know about']";
+            string questionTextXPath = "//*[@id='__next']/div/div[1]/div/div/div[1]/section/form/div/div/input";
             string questionButtonXPath = "//button[@type='submit']";
 
             EnterTextByXPath(questionTextXPath, question);
@@ -29,9 +29,9 @@ namespace WolframNet.Pages
 
         public string GetAnswer()
         {
-            string rootXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/div[1]/section/";
-            string answerDivXPath = $"{rootXPath}section[2]/div";
-            string answerButtonXPath = $"{rootXPath}section[2]/ul/li[3]/button/span";
+            string rootXPath = "//*[@id='__next']/div/div[1]/main/div[2]/div/div[2]/section/";
+            string answerDivXPath = $"{rootXPath}section[2]";
+            string answerButtonXPath = $"{rootXPath}section[2]/ul/li[4]/button/span";
             string answerTextXPath = $"{rootXPath}section[3]/div[1]/div/button/span";
 
             MouseoverByXPath(answerDivXPath);
